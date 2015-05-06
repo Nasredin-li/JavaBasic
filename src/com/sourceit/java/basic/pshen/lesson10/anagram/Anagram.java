@@ -1,6 +1,6 @@
 package com.sourceit.java.basic.pshen.lesson10.anagram;
 
-import com.sourceit.java.basic.pshen.ht8.employer.Employer;
+
 
 public class Anagram {
 
@@ -10,7 +10,6 @@ public class Anagram {
 		StringBuilder strb = new StringBuilder();
 		for (int i = 1; i < args.length; i++) {
 			System.out.println(args[i]);
-			String an = args[i];
 			strb.append(args[i]);
 		}
 
