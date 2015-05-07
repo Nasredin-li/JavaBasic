@@ -5,7 +5,7 @@ package com.sourceit.java.basic.pshen.lesson10.anagram;
 public class Anagram {
 
 	public static void main(String[] args) {
-		String anagramBase = args[0];
+		String anagramBase = args[0];//first argument is basic word, it is checking to the next arguments
 		System.out.println(anagramBase);
 		StringBuilder strb = new StringBuilder();
 		for (int i = 1; i < args.length; i++) {
