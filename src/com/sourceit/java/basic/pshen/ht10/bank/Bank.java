@@ -48,6 +48,8 @@ public class Bank implements MonetaryMovement {
 
 	public void createCredit(Person somebody, long summ, int dateOfReturn) {
 		customers.add(new Credit(somebody, summ, dateOfReturn));
+		//System.out.println(customers.add(new Credit(somebody, summ, dateOfReturn)));
+		//System.out.println(((Credit)(customers.get(2))).maxValueOfCredit);
 		outflowMoney(summ);
 	}
 
@@ -84,7 +86,6 @@ public class Bank implements MonetaryMovement {
 					&& e.surname == customer.surname && e.name == customer.name
 					&& e.someMoney.value >= summ) {
 				e.someMoney.value = e.someMoney.value - summ;
-
 			}
 		}
 	}

@@ -19,14 +19,14 @@ public class Account implements MonetaryMovement{
 	
 	public long incomingMoney(long income) {
 		someMoney.value = someMoney.value + income;
-		System.out.print(someMoney.value);
+		//System.out.print(someMoney.value);
 		return someMoney.value;
 	}
 
 
 	public long outflowMoney(long outflow) {
 		someMoney.value = someMoney.value- outflow;
-		System.out.print(someMoney.value);
+		//System.out.print(someMoney.value);
 		return someMoney.value;
 	}
 

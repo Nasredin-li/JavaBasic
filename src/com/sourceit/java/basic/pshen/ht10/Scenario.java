@@ -54,16 +54,12 @@ public class Scenario {
 	}
 
 	public void takeCreditMoney(Person customer, long creditSumm, Bank bank) {
-		//for (Account e : bank.customers) {
-			System.out.println(((Credit) (bank.customers.get(2))).maxValueOfCredit);
-			//if (creditSumm <= ((Credit) (bank.customers.get(2))).maxValueOfCredit) {
-				System.out.println(creditSumm);
+			if (creditSumm <= ((Credit) (bank.customers.get(2))).maxValueOfCredit) {
 				bank.outOfCredit(customer, creditSumm);
 				customer.incomingMoney(creditSumm);
-			//}
-			//bank.outOfCredit(customer, creditSumm);
-			//customer.incomingMoney(creditSumm);
-		//}
+			}
+			
+				System.out.println(((Credit) (bank.customers.get(2))).someMoney.value);
 	}
 
 	public void moneyToDeposit(Person customer, long summ, Bank bank) {

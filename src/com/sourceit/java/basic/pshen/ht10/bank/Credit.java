@@ -9,7 +9,11 @@ public class Credit extends Account{
 
 	public Credit(Person somebody, long maxValueOfCredit, int dateOfCreditReturn) {
 		super(somebody);
+		this.dateOfCreditReturn = dateOfCreditReturn;
+		this.maxValueOfCredit = maxValueOfCredit;
+		super.incomingMoney(maxValueOfCredit);
 	}
+
 
 	
 
