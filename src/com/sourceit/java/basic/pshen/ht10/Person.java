@@ -8,11 +8,12 @@ public class Person implements MonetaryMovement {
 	public String name;
 	public String surname;
 	public String ID;
-	public Cash someCash = new Cash(1000);
-	public Person(String name, String surname, String ID){
+	public Cash someCash;
+	public Person(String name, String surname, String ID, long summ){
 		this.name = name;
 		this.surname = surname;
 		this.ID = ID;
+		this.someCash = new Cash(summ);
 	};
 	
 	

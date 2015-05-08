@@ -16,16 +16,10 @@ public class Bank implements MonetaryMovement {
 		this.stock = stock;
 		BankMoney basicStock = new BankMoney(stock);
 		this.basicStock = basicStock;
-
 	}
 
 	public BankMoney basicStock = new BankMoney(stock);
 	public ArrayList<Account> customers = new ArrayList<Account>();
-	
-	//public int i = 0;
-	//public Account[] cust = new Account[i + 1];
-
-	
 
 	@Override
 	public long incomingMoney(long income) {
@@ -37,14 +31,24 @@ public class Bank implements MonetaryMovement {
 		return basicStock.value = basicStock.value - outflow;
 	}
 
+	long temp = 0;
+	long balance = 0;
+
+	public long getBalance() {
+		for (Account e : customers) {
+			temp = temp + e.someMoney.value;
+		}
+		this.balance = basicStock.value + temp;
+		return balance;
+	}
+
 	public void createAccount(Person somebody) {
 		customers.add(new Account(somebody));
-		
 	}
 
 	public void createCredit(Person somebody, long summ, int dateOfReturn) {
 		customers.add(new Credit(somebody, summ, dateOfReturn));
-		
+		outflowMoney(summ);
 	}
 
 	public void convertMoney(Cash cash, BankMoney bmoney) {
@@ -52,26 +56,45 @@ public class Bank implements MonetaryMovement {
 
 	public void toDeposit(Person customer, long summ) {
 		for (Account e : customers) {
-			if (e.ID == customer.ID) {
-				System.out.println(customer.ID);
-					e.someMoney.value = e.someMoney.value + summ;
+			if (e.ID == customer.ID && e.surname == customer.surname
+					&& e.name == customer.name) {
+				e.someMoney.value = e.someMoney.value + summ;
 			}
 		}
 	}
 
-	
+	public void transfer(Person beneficier, Person recepient, long summ,
+			Bank bank) {
+		bank.outOfDeposit(beneficier, summ);
+		bank.toDeposit(recepient, summ);
+		System.out.println(beneficier.surname + " transfer to "
+				+ recepient.surname + "`s deposit " + summ);
+
+	}
+
+	public void findCreditIndex(Person customer) {
+		for (Account e : customers) {
+			if((Credit)e != null ){}
+		}
+	}
+
+	public void outOfCredit(Person customer, long summ) {
+		for (Account e : customers) {
+			if (e.getClass() == Credit.class && e.ID == customer.ID
+					&& e.surname == customer.surname && e.name == customer.name
+					&& e.someMoney.value >= summ) {
+				e.someMoney.value = e.someMoney.value - summ;
+
+			}
+		}
+	}
 
 	public void outOfDeposit(Person customer, long summ) {
 		for (Account e : customers) {
-			if (e.ID == null) {
-				return;
-			} else {
-				if (e.ID == customer.ID) {
-					System.out.println(customer.ID);
-					if (e.someMoney.value >= summ) {
-						e.someMoney.value = e.someMoney.value - summ;
-					}
-				}
+			if (e.ID == customer.ID && e.surname == customer.surname
+					&& e.name == customer.name && e.someMoney.value >= summ) {
+				e.someMoney.value = e.someMoney.value - summ;
+
 			}
 		}
 	}
