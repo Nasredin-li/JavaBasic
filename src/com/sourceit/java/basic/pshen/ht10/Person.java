@@ -9,6 +9,8 @@ public class Person implements MonetaryMovement {
 	public String surname;
 	public String ID;
 	public Cash someCash;
+	public int AccountID;
+	public int CreditID;
 	public Person(String name, String surname, String ID, long summ){
 		this.name = name;
 		this.surname = surname;

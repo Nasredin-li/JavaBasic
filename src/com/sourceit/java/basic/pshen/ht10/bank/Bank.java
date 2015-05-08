@@ -33,6 +33,7 @@ public class Bank implements MonetaryMovement {
 
 	long temp = 0;
 	long balance = 0;
+	public int AccountID;
 
 	public long getBalance() {
 		for (Account e : customers) {
@@ -44,16 +45,19 @@ public class Bank implements MonetaryMovement {
 
 	public void createAccount(Person somebody) {
 		customers.add(new Account(somebody));
+		somebody.AccountID = this.AccountID;
+		this.AccountID++;
 	}
 
 	public void createCredit(Person somebody, long summ, int dateOfReturn) {
 		customers.add(new Credit(somebody, summ, dateOfReturn));
-		//System.out.println(customers.add(new Credit(somebody, summ, dateOfReturn)));
-		//System.out.println(((Credit)(customers.get(2))).maxValueOfCredit);
 		outflowMoney(summ);
-	}
-
-	public void convertMoney(Cash cash, BankMoney bmoney) {
+		somebody.CreditID = this.AccountID;
+		this.AccountID++;
+		System.out.println("Credit limit for "+somebody.surname+" credit account = "+((Credit)(customers.get(somebody.CreditID))).maxValueOfCredit);
+		
+		
+		
 	}
 
 	public void toDeposit(Person customer, long summ) {
@@ -69,16 +73,11 @@ public class Bank implements MonetaryMovement {
 			Bank bank) {
 		bank.outOfDeposit(beneficier, summ);
 		bank.toDeposit(recepient, summ);
-		System.out.println(beneficier.surname + " transfer to "
+		System.out.println(beneficier.surname + " makes transfer to "
 				+ recepient.surname + "`s deposit " + summ);
 
 	}
 
-	public void findCreditIndex(Person customer) {
-		for (Account e : customers) {
-			if((Credit)e != null ){}
-		}
-	}
 
 	public void outOfCredit(Person customer, long summ) {
 		for (Account e : customers) {
