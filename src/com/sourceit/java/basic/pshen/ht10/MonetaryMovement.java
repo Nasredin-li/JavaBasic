@@ -1,7 +1,17 @@
 package com.sourceit.java.basic.pshen.ht10;
 
-public interface MonetaryMovement {
-	public long incomingMoney(long income);
-	public long outflowMoney(long outflow);
+public class MonetaryMovement {
+	public static long incomingMoney(long income, long base) {
+		base = base + income;
+		return base;
+		}
+	
+	public static long outflowMoney(long outflow, long base) {
+		if(base>=outflow){
+			base = base - outflow;
+		     }
+		return base;
+		}
+	}
 
-}
+

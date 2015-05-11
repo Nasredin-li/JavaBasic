@@ -6,4 +6,9 @@ public class Money {
 	
 	public long value;//in cents
 	
+	public Money(long i) {
+		value = i;
+	}
+
+	
 }

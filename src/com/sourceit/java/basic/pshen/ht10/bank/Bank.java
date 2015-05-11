@@ -1,12 +1,11 @@
 package com.sourceit.java.basic.pshen.ht10.bank;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import com.sourceit.java.basic.pshen.ht10.*;
 import com.sourceit.java.basic.pshen.ht10.money.*;
 
-public class Bank implements MonetaryMovement {
+public class Bank {
 
 	public String nameOfBank;
 	public long stock;
@@ -21,25 +20,15 @@ public class Bank implements MonetaryMovement {
 	public BankMoney basicStock = new BankMoney(stock);
 	public ArrayList<Account> customers = new ArrayList<Account>();
 
-	@Override
-	public long incomingMoney(long income) {
-		return basicStock.value = basicStock.value + income;
-	}
-
-	@Override
-	public long outflowMoney(long outflow) {
-		return basicStock.value = basicStock.value - outflow;
-	}
-
 	long temp = 0;
 	long balance = 0;
 	public int AccountID;
 
 	public long getBalance() {
 		for (Account e : customers) {
-			temp = temp + e.someMoney.value;
+			temp = MonetaryMovement.incomingMoney(e.someMoney.value, temp);
 		}
-		this.balance = basicStock.value + temp;
+		this.balance = MonetaryMovement.incomingMoney(temp, basicStock.value);
 		return balance;
 	}
 
@@ -51,20 +40,24 @@ public class Bank implements MonetaryMovement {
 
 	public void createCredit(Person somebody, long summ, int dateOfReturn) {
 		customers.add(new Credit(somebody, summ, dateOfReturn));
-		outflowMoney(summ);
+		//System.out.println(customers.get(somebody.CreditID).someMoney.value);
+		basicStock.value = MonetaryMovement
+				.outflowMoney(summ, basicStock.value);
 		somebody.CreditID = this.AccountID;
 		this.AccountID++;
-		System.out.println("Credit limit for "+somebody.surname+" credit account = "+((Credit)(customers.get(somebody.CreditID))).maxValueOfCredit);
-		
-		
-		
+		System.out
+				.println("Credit limit for "
+						+ somebody.surname
+						+ " credit account = "
+						+ ((Credit) (customers.get(somebody.CreditID))).maxValueOfCredit);
+
 	}
 
 	public void toDeposit(Person customer, long summ) {
 		for (Account e : customers) {
-			if (e.ID == customer.ID && e.surname == customer.surname
-					&& e.name == customer.name) {
-				e.someMoney.value = e.someMoney.value + summ;
+			if (checkCustomerData(customer, e)) {
+				e.someMoney.value = MonetaryMovement.incomingMoney(summ,
+						e.someMoney.value);
 			}
 		}
 	}
@@ -78,25 +71,30 @@ public class Bank implements MonetaryMovement {
 
 	}
 
-
 	public void outOfCredit(Person customer, long summ) {
 		for (Account e : customers) {
-			if (e.getClass() == Credit.class && e.ID == customer.ID
-					&& e.surname == customer.surname && e.name == customer.name
-					&& e.someMoney.value >= summ) {
-				e.someMoney.value = e.someMoney.value - summ;
+			if (e.getClass() == Credit.class && checkCustomerData(customer, e)) {
+				e.someMoney.value = MonetaryMovement.outflowMoney(summ,
+						e.someMoney.value);
 			}
 		}
 	}
 
 	public void outOfDeposit(Person customer, long summ) {
 		for (Account e : customers) {
-			if (e.ID == customer.ID && e.surname == customer.surname
-					&& e.name == customer.name && e.someMoney.value >= summ) {
-				e.someMoney.value = e.someMoney.value - summ;
-
+			if (checkCustomerData(customer, e)) {
+				e.someMoney.value = MonetaryMovement.outflowMoney(summ,
+						e.someMoney.value);
 			}
 		}
+	}
+
+	public boolean checkCustomerData(Person customer, Account e) {
+		if (e.ID == customer.ID && e.surname == customer.surname
+				&& e.name == customer.name) {
+			return true;
+		}else{
+		return false;}
 	}
 
 }

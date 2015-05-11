@@ -2,6 +2,7 @@ package com.sourceit.java.basic.pshen.ht10.bank;
 
 import java.util.ArrayList;
 
+import com.sourceit.java.basic.pshen.ht10.MonetaryMovement;
 import com.sourceit.java.basic.pshen.ht10.Person;
 
 public class Proof {
@@ -20,6 +21,7 @@ public class Proof {
 		proof.createAccount(customer2);
 		proof.createAccount(customer3);
 		proof.createAccount(customer4);
+		
 		proof.customers.getClass();
 		proof.customers.get(0).someMoney.value = proof.customers.get(0).someMoney.value + 50;
 		proof.customers.get(0).someMoney.value = proof.customers.get(0).someMoney.value + 50;
@@ -28,6 +30,7 @@ public class Proof {
 	}
 	public void createAccount(Person somebody) {
 		customers.add(new Account(somebody));
+		//MonetaryMovement.incomingMoney(proof.customers.get(0).someMoney.value);
 	}
 
 }

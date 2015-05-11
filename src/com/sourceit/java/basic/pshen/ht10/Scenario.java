@@ -1,9 +1,9 @@
 package com.sourceit.java.basic.pshen.ht10;
 
-import com.sourceit.java.basic.pshen.ht10.bank.Account;
+
 import com.sourceit.java.basic.pshen.ht10.bank.Bank;
 import com.sourceit.java.basic.pshen.ht10.bank.Credit;
-import com.sourceit.java.basic.pshen.ht10.money.*;
+
 
 public class Scenario {
 	static Scenario sc = new Scenario();
@@ -40,6 +40,7 @@ public class Scenario {
 				+ " has in his account "
 				+ bank.customers.get(customer2.AccountID).someMoney.value);
 		bank.createCredit(customer1, 5000, 20160505);
+		//System.out.println(((Credit) (bank.customers.get(customer1.CreditID))).maxValueOfCredit);
 		sc.takeCreditMoney(customer1, 3000, bank);
 		sc.takeMoney(customer2, 300, bank);
 		System.out.println();
@@ -63,11 +64,11 @@ public class Scenario {
 	public void takeCreditMoney(Person customer, long creditSumm, Bank bank) {
 		if (creditSumm <= ((Credit) (bank.customers.get(customer.CreditID))).maxValueOfCredit) {
 			bank.outOfCredit(customer, creditSumm);
-			customer.incomingMoney(creditSumm);
+			customer.someCash.value = MonetaryMovement.incomingMoney(creditSumm, customer.someCash.value);
 			System.out.println(customer.surname + " takes " + creditSumm
 					+ " of credit");
 			System.out.println(customer.surname + " has in credit account "
-					+ ((Credit) (bank.customers.get(2))).someMoney.value);
+					+ ((Credit) (bank.customers.get(customer.CreditID))).someMoney.value);
 		} else {
 			System.out.println("Insufficient funds, operation is canceled");
 		}
@@ -76,7 +77,7 @@ public class Scenario {
 
 	public void moneyToDeposit(Person customer, long summ, Bank bank) {
 		if (summ <= customer.someCash.value) {
-			customer.outflowMoney(summ);
+			customer.someCash.value = MonetaryMovement.outflowMoney(summ, customer.someCash.value);
 			bank.toDeposit(customer, summ);
 			System.out.println(customer.surname + " add to deposit " + summ);
 		} else {
@@ -87,7 +88,7 @@ public class Scenario {
 	public void takeMoney(Person customer, long summ, Bank bank) {
 		if (summ <= bank.customers.get(customer.AccountID).someMoney.value) {
 			bank.outOfDeposit(customer, summ);
-			customer.incomingMoney(summ);
+			customer.someCash.value = MonetaryMovement.outflowMoney(summ, customer.someCash.value);
 			System.out.println(customer.surname + " takes from deposit " + summ);
 		}else {
 			System.out.println("Insufficient funds, operation is canceled");
