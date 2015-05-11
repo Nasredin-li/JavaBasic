@@ -15,7 +15,7 @@ public class Account{
 		this.ID = somebody.ID;
 	}
 	
-	public BankMoney someMoney = new BankMoney(0);
+	public Money someMoney = new Money(0);
 	
 	
 
