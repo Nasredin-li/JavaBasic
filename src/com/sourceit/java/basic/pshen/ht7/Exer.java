@@ -1,4 +1,4 @@
-package com.sourceit.java.basic.pshen.lesson7;
+package com.sourceit.java.basic.pshen.ht7;
 
 import com.sourceit.exercise.IntArrays;
 
