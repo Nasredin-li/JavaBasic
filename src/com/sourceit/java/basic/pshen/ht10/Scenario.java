@@ -1,9 +1,9 @@
 package com.sourceit.java.basic.pshen.ht10;
 
-import com.sourceit.java.basic.pshen.ht10.bank.Account;
+
 import com.sourceit.java.basic.pshen.ht10.bank.Bank;
 import com.sourceit.java.basic.pshen.ht10.bank.Credit;
-import com.sourceit.java.basic.pshen.ht10.money.*;
+
 
 public class Scenario {
 	static Scenario sc = new Scenario();
@@ -15,59 +15,40 @@ public class Scenario {
 		Bank bank = new Bank("Aval", 50000);
 		Person customer1 = new Person("Vasia", "Petrov", "MN12345", 1000);
 		Person customer2 = new Person("Slava", "Smith", "MA654345", 500);
-		System.out.println(customer1.name + " " + customer1.surname
-				+ " cash money = " + customer1.someCash.value);
-		System.out.println(customer2.name + " " + customer2.surname
-				+ " cash money = " + customer2.someCash.value);
-		System.out.println("Bank " + bank.nameOfBank + " has a basicstock = "
-				+ bank.basicStock.value);
-		System.out.println("General summ of moneys in bank " + bank.nameOfBank
-				+ " " + bank.getBalance());
+		
+		sc.printDataOfPerson(customer1);
+		sc.printDataOfPerson(customer2);
+		bank.printBankData();
+		
 		bank.createAccount(customer1);
 		bank.createAccount(customer2);
+		
 		sc.moneyToDeposit(customer1, 800, bank);
-		System.out.println(bank.customers.get(customer1.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer1.AccountID).someMoney.value);
-		System.out.println(bank.customers.get(customer2.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer2.AccountID).someMoney.value);
-		bank.transfer(customer1, customer2, 400, bank);
-		System.out.println(bank.customers.get(customer1.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer1.AccountID).someMoney.value);
-		System.out.println(bank.customers.get(customer2.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer2.AccountID).someMoney.value);
+		bank.printDataAccounts();
+		
+		bank.transfer(customer1, customer2, 500);
+		bank.printDataAccounts();
+		
 		bank.createCredit(customer1, 5000, 20160505);
 		sc.takeCreditMoney(customer1, 3000, bank);
 		sc.takeMoney(customer2, 300, bank);
 		System.out.println();
-		System.out.println(bank.customers.get(customer1.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer1.AccountID).someMoney.value);
-		System.out.println(bank.customers.get(customer2.AccountID).surname
-				+ " has in his account "
-				+ bank.customers.get(customer2.AccountID).someMoney.value);
-		System.out.println(customer1.name + " " + customer1.surname
-				+ " cash money = " + customer1.someCash.value);
-		System.out.println(customer2.name + " " + customer2.surname
-				+ " cash money = " + customer2.someCash.value);
-		System.out.println("Bank " + bank.nameOfBank + "has a basicstock = "
-				+ bank.basicStock.value);
-		System.out.println("General summ of moneys in bank " + bank.nameOfBank
-				+ " " + bank.getBalance());
-
+		bank.printDataAccounts();
+		
+		sc.printDataOfPerson(customer1);
+		sc.printDataOfPerson(customer2);
+		bank.printBankData();
+		
 	}
 
 	public void takeCreditMoney(Person customer, long creditSumm, Bank bank) {
 		if (creditSumm <= ((Credit) (bank.customers.get(customer.CreditID))).maxValueOfCredit) {
 			bank.outOfCredit(customer, creditSumm);
-			customer.incomingMoney(creditSumm);
-			System.out.println(customer.surname + " takes " + creditSumm
-					+ " of credit");
+			MonetaryMovement.incomingMoney(creditSumm, customer.someCash);
+			System.out.println(customer.surname +" takes "+creditSumm
+					+" of credit");
 			System.out.println(customer.surname + " has in credit account "
-					+ ((Credit) (bank.customers.get(2))).someMoney.value);
+					+ ((Credit) (bank.customers.get(customer.CreditID))).someMoney.value);
 		} else {
 			System.out.println("Insufficient funds, operation is canceled");
 		}
@@ -76,7 +57,7 @@ public class Scenario {
 
 	public void moneyToDeposit(Person customer, long summ, Bank bank) {
 		if (summ <= customer.someCash.value) {
-			customer.outflowMoney(summ);
+			MonetaryMovement.outflowMoney(summ, customer.someCash);
 			bank.toDeposit(customer, summ);
 			System.out.println(customer.surname + " add to deposit " + summ);
 		} else {
@@ -87,11 +68,18 @@ public class Scenario {
 	public void takeMoney(Person customer, long summ, Bank bank) {
 		if (summ <= bank.customers.get(customer.AccountID).someMoney.value) {
 			bank.outOfDeposit(customer, summ);
-			customer.incomingMoney(summ);
+			MonetaryMovement.incomingMoney(summ, customer.someCash);
 			System.out.println(customer.surname + " takes from deposit " + summ);
 		}else {
+			System.out.print("Transfer " + summ +" from "+customer.surname+" account is impossible.");
 			System.out.println("Insufficient funds, operation is canceled");
 		}
+	}
+	public void printDataOfPerson(Person somebody){
+		System.out.print(somebody.name);
+		System.out.print(somebody.surname);
+		System.out.print(" cash money = ");
+		System.out.println(somebody.someCash.value);
 	}
 
 }
