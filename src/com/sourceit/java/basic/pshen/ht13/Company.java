@@ -27,13 +27,13 @@ public class Company {
 		System.out.println(nameByPopularity);
 		System.out.println();
 
-		Queue employees = new ArrayDeque(names);
+		Collection employees = new ArrayDeque(names);
 		System.out.print("Queue for tickets ");
 		print(employees);
 		System.out.print("Add: Glafira");
 		employees.add("Glafira");
 		System.out.print("Remove: first first name");
-		employees.remove(employees.element());
+		employees.remove(((ArrayDeque) employees).element());
 		print(employees);
 		
 
@@ -77,8 +77,12 @@ public class Company {
 		System.out.println(names.get(i));
 
 	}
+	private static void print(ArrayList<String> names) {
+		System.out.println(names.toString());
 
-	private static void print(Collection<String> names) {
+	}
+
+	private static void print(Collection names) {
 		System.out.println(names.toString());
 
 	}
