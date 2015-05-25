@@ -4,23 +4,22 @@ public class Exeptions {
 
 	@SuppressWarnings("finally")
 	public static void main(String[] args) {
-		String str= new String(args[0]);
-		//System.out.println(str);
+		String str = new String();
+
 		try {
 			str = new String(args[0]);
-			
 			System.out.print(str.substring(Integer.parseInt(args[1]),
 					Integer.parseInt(args[2])));
-			// throw new StringIndexOutOfBoundsException();
+			
 		} catch (NumberFormatException nfe) {
 			try {
 				System.out.print(str.substring(Integer.parseInt(args[1])));
-				throw new StringIndexOutOfBoundsException();
+
 			} catch (NumberFormatException nfe2) {
 				try {
 
 					System.out.print(str.substring(Integer.parseInt(args[2])));
-					
+
 				} catch (NumberFormatException nfe3) {
 					System.out
 							.print(" Enter one or two digit, to define a print range substring");
@@ -29,8 +28,11 @@ public class Exeptions {
 							.print(" Enter one or two digit, to define a print range substring");
 				} catch (ArrayIndexOutOfBoundsException ok) {
 					System.out
-					.print(" Enter one or two digit, to define a print range substring");
+							.print(" Enter one or two digit, to define a print range substring");
 				}
+			} catch (StringIndexOutOfBoundsException nfe3) {
+				System.out
+						.print(" Enter one or two digit, to define a print range substring");
 			}
 
 		} catch (ArrayIndexOutOfBoundsException ai) {
@@ -38,7 +40,7 @@ public class Exeptions {
 				System.out.print(str.substring(Integer.parseInt(args[1])));
 			} catch (ArrayIndexOutOfBoundsException aibo) {
 				System.out
-						.print(" Enter one or two digit, to define a print range substring");
+						.print(" Enter a string & one or two digit, to define a print range substring");
 
 			} catch (StringIndexOutOfBoundsException siob) {
 				System.out
