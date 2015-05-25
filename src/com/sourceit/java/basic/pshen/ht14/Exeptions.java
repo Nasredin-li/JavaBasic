@@ -2,14 +2,14 @@ package com.sourceit.java.basic.pshen.ht14;
 
 public class Exeptions {
 
-	@SuppressWarnings("finally")
+	
 	public static void main(String[] args) {
 		String str = new String();
 
 		try {
 			str = new String(args[0]);
-			System.out.print(str.substring(Integer.parseInt(args[1]),
-					Integer.parseInt(args[2])));
+			System.out.println(str.substring(Math.min(Integer.parseInt(args[1]), Integer.parseInt(args[2])),
+					Math.max(Integer.parseInt(args[1]), Integer.parseInt(args[2]))));
 			
 		} catch (NumberFormatException nfe) {
 			try {

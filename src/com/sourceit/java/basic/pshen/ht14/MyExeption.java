@@ -15,27 +15,42 @@ public class MyExeption {
 	public void exceptionTrackString(String args[], String str, int i,
 			String message1, String message2) {
 		try {
-			System.out.println(str = args[0]);
-
-			System.out.println(str.substring(Integer.parseInt(args[i + 1]),
-					Integer.parseInt(args[i + 2])));
-
-			//System.out.println(str.substring(Integer.parseInt(args[i + 1])));
-			//System.out.println(str.substring(Integer.parseInt(args[i + 2])));
+			str = args[0];
+			System.out.println(str.substring(
+					Math.min(Integer.parseInt(args[1]),
+							Integer.parseInt(args[2])),
+					Math.max(Integer.parseInt(args[1]),
+							Integer.parseInt(args[2]))));
 		} catch (StringIndexOutOfBoundsException nfe3) {
-			print(message2);
+			try {
+				System.out.println(str.substring(Math.min(
+						Integer.parseInt(args[1]), Integer.parseInt(args[2]))));
+			} catch (StringIndexOutOfBoundsException nf) {
+				print(message2);		
+			}
 		} catch (NumberFormatException nfe3) {
-			print(message2);
+			try {
+				System.out.println(str.substring(Integer.parseInt(args[1])));
+			} catch (StringIndexOutOfBoundsException nfe2) {
+				print(message2);
+			} catch (NumberFormatException nfe2) {
+				System.out.println(str.substring(Integer.parseInt(args[2])));
+			
+			}
+
 		} catch (ArrayIndexOutOfBoundsException ok) {
-			print(message1);
-			// return;
+			try {
+				System.out.println(str.substring(Math.min(
+						Integer.parseInt(args[1]), Integer.parseInt(args[2]))));
+			} catch (StringIndexOutOfBoundsException nfe3) {
+				print(message2);
+			} catch (NumberFormatException nfe3) {
+				print(message2);
+			} catch (ArrayIndexOutOfBoundsException o) {
+				print(message1);
+			}
 		}
 
-	}
-
-	public String actionString(String args[], String str) {
-		str = args[0];
-		return str;
 	}
 
 	public void print(String message) {
