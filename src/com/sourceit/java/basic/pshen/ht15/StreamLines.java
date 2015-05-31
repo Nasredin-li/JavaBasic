@@ -63,8 +63,7 @@ public class StreamLines {
 			}
 		}
 
-		System.out.println(new File("CopyTararam.txt").getAbsolutePath()
-				+ " created.");
+		
 
 	}
 }
