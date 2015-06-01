@@ -16,12 +16,25 @@ public class Play {
 		Child ch3 = new Child("Катя ","Литвин ", 2007);
 		Child ch4 = new Child("Ира ","Варава ", 2006);
 		Shop shop = new Shop("У бабуси");
-		Icecream desireOfChild1 = ch1.desire((new Icecream("шоколадное ", "на палочке")), shop.seller);
-		Icecream order1= (Icecream) (shop.seller.workingInShop(shop)).sellProduct(desireOfChild1);
 		
-		String result1 = (ch1.name + ch1.surname + ch1.eat(order1));
-		System.out.println(result1);
+		Icecream order1= (Icecream) (shop.seller.workingInShop(shop)).sellProduct(ch1.desire("шоколадное мороженное ", "на палочке."));
+		Icecream order2= (Icecream) (shop.seller.workingInShop(shop)).sellProduct(ch2.desire("ванильное мороженное ", "в стаканчике."));
+		Icecream order3= (Icecream) (shop.seller.workingInShop(shop)).sellProduct(ch3.desire("крем-брюле ", "в брикете."));
+		Icecream order4= (Icecream) (shop.seller.workingInShop(shop)).sellProduct(ch4.desire("фруктовое мороженное ", "рожок."));
+		
+		play.print(ch1, order1);
+		play.print(ch2, order2);
+		play.print(ch3, order3);
+		play.print(ch4, order4);
+		
 
 	}
+
+	private void print(Child ch, Icecream order) {
+		String result = (ch.name + ch.surname + ch.eat(order));
+		System.out.println(result);
+		
+	}
+
 	
 }

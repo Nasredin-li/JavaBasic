@@ -22,8 +22,8 @@ public class Child extends Human implements scoolchild {
 		return (eating[i] + ((Icecream)something).taste + ((Icecream)something).form );
 	}
 	
-	public Icecream desire(Foodstuff something, Human somebody){
-		return new Icecream(((Icecream)something).taste, ((Icecream)something).form);
+	public Icecream desire(String taste, String form){
+		return (new Icecream(taste, form));
 	}	
 
 		

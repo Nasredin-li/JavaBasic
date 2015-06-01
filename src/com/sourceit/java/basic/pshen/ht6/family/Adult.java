@@ -1,9 +1,12 @@
 package com.sourceit.java.basic.pshen.ht6.family;
 
+import com.sourceit.java.basic.pshen.ht6.shop.Foodstuff;
+
 public class Adult extends Human{
 
 	@Override
-	public void eat() {
+	public String eat(Foodstuff something) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
