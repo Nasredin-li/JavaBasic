@@ -2,6 +2,8 @@ package com.sourceit.java.basic.pshen.ht6.family;
 
 import java.util.*;
 
+import com.sourceit.java.basic.pshen.ht6.shop.Foodstuff;
+
 
 public abstract class Human {
 	public String name;
@@ -10,7 +12,9 @@ public abstract class Human {
 	protected String sex;
 	private int age;
 	
-	public abstract void eat();
+	
+	
+	public abstract String eat(Foodstuff something);
 	
 	public abstract boolean isHappy();
 	
