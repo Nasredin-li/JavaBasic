@@ -13,9 +13,9 @@ public class Stream {
         FileWriter outputStream = null;
 		try {
 			inputStream = new FileReader(
-					"F:\\JAVA\\eclipse\\JavaBasic\\src\\com\\sourceit\\java\\basic\\pshen\\ht15\\Tararam.txt");
+					args[0]);
 			outputStream = new FileWriter(
-					"F:\\JAVA\\eclipse\\JavaBasic\\src\\com\\sourceit\\java\\basic\\pshen\\ht15\\CopyTararam.txt");
+					args[1]);
 			int c;
 			StringBuilder tx = new StringBuilder();
 			
@@ -37,6 +37,9 @@ public class Stream {
 			outputStream.write(" CharByCount-- "+(text.getCharByCount(text.getCharCount('b'))));
 			outputStream.write("   "+text.getText());
 			
+
+		} catch (ArrayIndexOutOfBoundsException p){
+			System.out.println("Enter a path: ");
 		} finally {
 			if (inputStream != null) {
 				inputStream.close();
@@ -46,9 +49,7 @@ public class Stream {
 			}
 		}
 
-		System.out.println(new File("CopyTararam.txt").getAbsolutePath()
-				+ " created.");
-
+		
 	}
 
 }

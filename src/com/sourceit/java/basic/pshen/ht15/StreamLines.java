@@ -6,17 +6,22 @@ import java.util.ArrayList;
 import com.sourceit.java.basic.pshen.ht11.Text;
 
 public class StreamLines {
-	public String path = "F:\\JAVA\\eclipse\\JavaBasic\\src\\com\\sourceit\\java\\basic\\pshen\\ht15\\";
-	public String pathIn = (path + "Tararam.txt");
-	public String pathOut = (path + "CopyTararam.txt");
 
 	public static void main(String[] args) throws IOException {
+		try {
+			String path = args[0];
+			String pathIn = (path + args[1]);
+			String pathOut = (path + args[2]);
+			StreamLines y = new StreamLines();
+			y.copyLine(pathIn, pathOut);
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("Enter three arguments: path, input file, output file");
+		}
 
-		StreamLines y = new StreamLines();
-		y.copyLine();
+		
 	}
 
-	public void copyLine() throws IOException {
+	public void copyLine(String pathIn, String pathOut) throws IOException {
 		BufferedReader inputStream = null;
 		PrintWriter outputStream = null;
 		try {
@@ -26,7 +31,6 @@ public class StreamLines {
 			StringBuilder tx = new StringBuilder();
 			ArrayList<String> arr = new ArrayList<String>();
 
-			
 			while ((c = inputStream.readLine()) != null) {
 				tx.append(c);
 				arr.add(c);
@@ -59,8 +63,7 @@ public class StreamLines {
 			}
 		}
 
-		System.out.println(new File("CopyTararam.txt").getAbsolutePath()
-				+ " created.");
+		
 
 	}
 }
