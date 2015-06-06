@@ -2,6 +2,7 @@ package com.sourceit.java.basic.pshen.ht7;
 
 import com.sourceit.exercise.IntArrays;
 
+
 //import java.util.*;
 
 public class Exer {
@@ -13,14 +14,14 @@ public class Exer {
 		Exer b = new Exer();
 		IntArrays  newArr = b.new MyArr();
 		newArr.add(8);
-		System.out.println(newArr.size());
+		System.out.println("Array size "+newArr.size());
 		System.out.println(newArr.get(0));
 		newArr.add(150);
-		System.out.println(newArr.size());
+		System.out.println("Array size "+newArr.size());
 		System.out.println(newArr.get(0));
 		System.out.println(newArr.get(1));
 		newArr.add(12);
-		System.out.println(newArr.size());
+		System.out.println("Array size "+newArr.size());
 		System.out.println(newArr.get(0));
 		System.out.println(newArr.get(1));
 		System.out.println(newArr.get(2));
