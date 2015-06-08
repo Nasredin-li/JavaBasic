@@ -16,7 +16,8 @@ public class Text extends TextStatistics {
 
 	@Override
 	public int getCharFrequency(char c) {
-		return getCharCount(c) * 100 / getText().toCharArray().length;
+		
+		return getCharCount(c) * 100 / getText().length();
 
 	}
 
@@ -39,8 +40,26 @@ public class Text extends TextStatistics {
 		}
 		return unique;
 	}
-
+	
 	@Override
+	public List<String> words() {
+		List<String> list = new ArrayList<String>();
+		StringBuilder txt2 = new StringBuilder();
+		
+		for (char e : getText().toCharArray()) {
+			
+			if(Character.isWhitespace(e)){
+				list.add(txt2.toString());
+				txt2.delete(0, txt2.length());
+			}
+			if (Character.isLetter(e)) { 								
+				txt2.append(e);
+			}
+		}
+		return list;
+	}
+
+	/*@Override
 	public List<String> words() {
 		List<String> list = new ArrayList<String>();
 		StringBuilder txt2 = new StringBuilder();
@@ -57,7 +76,7 @@ public class Text extends TextStatistics {
 			list.add(e);// full the List
 		}
 		return list;
-	}
+	}*/
 
 	/**
 	 * public Map<Integer, String> getChars2() - not include all text chars,
@@ -102,6 +121,10 @@ public class Text extends TextStatistics {
 	}
 
 	public static void main(String[] args) {
+		if(args.length==0){
+			System.out.println("Enter a text as comand line argument.");
+			return;
+		}
 		StringBuilder txt = new StringBuilder();
 		for (String e : args) {
 			txt.append(e);
