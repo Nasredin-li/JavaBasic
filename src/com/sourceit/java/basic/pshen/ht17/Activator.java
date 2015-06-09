@@ -18,7 +18,7 @@ import com.sourceit.java.basic.pshen.ht15.StreamLines;
 
 public class Activator {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
 
 		System.out
 				.println("Enter a digit as string number for run the java aplication");
@@ -30,32 +30,20 @@ public class Activator {
 		System.out.println("6 -- <Exeption><HT14>");
 		System.out.println("7 -- <Stream>");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		//System.out.println("Enter String");
-		//String s = br.readLine();
-        
-        //System.out.println("Received a string: " + s);
-        
+		
         System.out.println("Enter Integer:");
         try{
             int i = Integer.parseInt(br.readLine());
             run(i, args);
-            //System.out.println("Received an integer: " + i);
+           
         }catch(NumberFormatException nfe){
             System.err.println("Invalid Format!");
-        }
+        } catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
-		/*
-		 * com.sourceit.java.basic.pshen.ht6.Play.main(args);
-		 * com.sourceit.java.basic.pshen.ht7.Exer.main(args);
-		 * com.sourceit.java.basic.pshen.ht8.Launcher2.main(args);
-		 * com.sourceit.java.basic.pshen.ht10.Scenario.main(args);
-		 * com.sourceit.java.basic.pshen.ht13.Company.main(args);
-		 * com.sourceit.java.basic.pshen.ht14.MyExeption.main(args); try {
-		 * com.sourceit.java.basic.pshen.ht15.StreamLines.main(args); } catch
-		 * (IOException e) { // TODO Auto-generated catch block
-		 * e.printStackTrace(); }
-		 * 
-		 */
+		
 
 	}
 
