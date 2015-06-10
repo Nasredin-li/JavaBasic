@@ -23,22 +23,58 @@ public class WGet {
 		String line = null;
 		if (args.length == 0) {
 			printInstruction(instruction, 0);
-			try {
-				downloadPage(url, is, br, line, getUrl());
-				printInstruction(userAction, 1);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			System.out.println("Enter some web address:");
+			inputProcessing(userAction, url, is, br, line, getIn());
 		} else {
-			downloadPage(url, is, br, line, args[0]);
-			printInstruction(userAction, 1);
+			inputProcessing(userAction, url, is, br, line, args[0]);
 		}
 	}
-	private static String getUrl() throws IOException{
+	private static void inputProcessing(String[] userAction, URL url,
+			InputStream is, BufferedReader br, String line, String in) {
+		downloadPage(url, is, br, line, in);
+		System.out.println("You can choose by number: ");
+		printInstruction(userAction, 1);
+		Integer choiceUser = Integer.parseInt(getIn());
+		switch (choiceUser) {
+        case 1:  savePageToFile();
+                 break;
+        case 2:  getTitle();
+                 break;
+        case 3:  findWord();
+                 break;
+        case 4:  getURLs();
+        default: 
+                 break;
+    }
+		
+	}
+	private static void getURLs() {
+		// TODO Auto-generated method stub
+		
+	}
+	private static void findWord() {
+		// TODO Auto-generated method stub
+		
+	}
+	private static void getTitle() {
+		// TODO Auto-generated method stub
+		
+	}
+	private static void savePageToFile() {
+		// TODO Auto-generated method stub
+		
+	}
+	private static String getIn(){
+		String in = null;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("Enter some web address:");
-		return br.readLine();
+		try {
+			in=br.readLine();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return in;
 }
 
 	private static void printInstruction(String[] string, int j) {
@@ -62,11 +98,12 @@ public class WGet {
 			while ((line = br.readLine()) != null) {
 				pageStock.add(line);
 			}
+			System.out.println("Your input: "+userUrl);
 		} catch (Exception ex) {
 			System.out.println("Smth. wrong " + ex);
 		} finally {
 			if (is != null) {
-				System.out.println(pageStock.size());
+				
 				try {
 					is.close();
 				} catch (IOException e) {
