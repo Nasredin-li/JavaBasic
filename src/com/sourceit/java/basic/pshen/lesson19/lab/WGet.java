@@ -13,7 +13,7 @@ public class WGet {
 
 	public static void main(String[] args) {
 		String[] instruction = { "-JAVA CONSOLE BROWSER-",
-				"Usage: some web address", "      or -i",
+				"Usage: some web address", 
 				"Example: http://google.com" };
 		String[] userAction = { "Save page", "Display a title of a page",
 				"Find some word", "list all url’s" };
@@ -26,6 +26,7 @@ public class WGet {
 			System.out.println("Enter some web address:");
 			inputProcessing(userAction, url, is, br, line, getIn());
 		} else {
+			printInstruction(instruction, 0);
 			inputProcessing(userAction, url, is, br, line, args[0]);
 		}
 	}
