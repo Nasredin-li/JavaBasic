@@ -56,46 +56,56 @@ public class WGet {
 			System.out.println(getTitle(pageStock));
 			break;
 		case 3:
-			findWord(pageStock, null);
+			System.out.println("Enter a word to find: ");
+			System.out.println(findWord(pageStock, null));
 			break;
 		case 4:
-			getURLs(pageStock);
+			System.out.println(getURLs(pageStock));
 		default:
 			break;
 		}
 
 	}
 
-	private static void getURLs(ArrayList<String> pageStock) {
-		findWord(pageStock, "https://");
-
+	private static ArrayList<String> getURLs(ArrayList<String> pageStock) {
+		ArrayList<String> stock = new ArrayList<String>();
+		for (String e : findWord(pageStock, "http://")) {
+			String[] localVar = e.split("\"");
+			for (String l : localVar){
+				if(l.startsWith("http://")){
+					stock.add(l);
+				}
+			}
+		}
+		return stock;
 	}
 
-	private static void findWord(ArrayList<String> pageStock, String string) {
+	private static ArrayList<String> findWord(ArrayList<String> pageStock, String string) {
 		String word=string;
+		ArrayList<String> stock= new ArrayList<String>();
 		if (string == null) {
-			System.out.println("Enter a word to find: ");
 			word = getIn();
 		}
 		int i = 0;
 		for (String g : pageStock) {
 			if (g.contains(word)) {
-				System.out.println(g);
+				stock.add(g);
+				//System.out.println(g);
 				i++;
 			}
-
 		}
 		System.out.print("<" + word);
 		System.out.print("> is found in ");
 		System.out.print(i);
 		System.out.print(" strings.");
+		return stock;
 
 	}
 
 	private static String getTitle(ArrayList<String> pageStock) {
 		String title = null;
 		for (String e : pageStock) {
-			if (e.startsWith("<title>") || e.startsWith("<h1>")) {
+			if (e.startsWith("<title>")) {
 
 				title = (e.substring(7).split("</title>"))[0];
 			}
