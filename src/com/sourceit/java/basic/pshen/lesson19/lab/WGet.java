@@ -51,16 +51,20 @@ public class WGet {
 		switch (choiceUser) {
 		case 1:
 			savePageToFile(pageStock);
+			inputProcessing(userAction, url, is, br, line, getIn());
 			break;
 		case 2:
 			System.out.println(getTitle(pageStock));
+			inputProcessing(userAction, url, is, br, line, getIn());
 			break;
 		case 3:
 			System.out.println("Enter a word to find: ");
 			System.out.println(findWord(pageStock, null));
+			inputProcessing(userAction, url, is, br, line, getIn());
 			break;
 		case 4:
 			System.out.println(getURLs(pageStock));
+			inputProcessing(userAction, url, is, br, line, getIn());
 		default:
 			break;
 		}
@@ -71,8 +75,8 @@ public class WGet {
 		ArrayList<String> stock = new ArrayList<String>();
 		for (String e : findWord(pageStock, "http://")) {
 			String[] localVar = e.split("\"");
-			for (String l : localVar){
-				if(l.startsWith("http://")){
+			for (String l : localVar) {
+				if (l.startsWith("http://")) {
 					stock.add(l);
 				}
 			}
@@ -80,9 +84,10 @@ public class WGet {
 		return stock;
 	}
 
-	private static ArrayList<String> findWord(ArrayList<String> pageStock, String string) {
-		String word=string;
-		ArrayList<String> stock= new ArrayList<String>();
+	private static ArrayList<String> findWord(ArrayList<String> pageStock,
+			String string) {
+		String word = string;
+		ArrayList<String> stock = new ArrayList<String>();
 		if (string == null) {
 			word = getIn();
 		}
@@ -90,32 +95,33 @@ public class WGet {
 		for (String g : pageStock) {
 			if (g.contains(word)) {
 				stock.add(g);
-				//System.out.println(g);
+				
 				i++;
 			}
 		}
-		System.out.print("<" + word);
-		System.out.print("> is found in ");
-		System.out.print(i);
-		System.out.print(" strings.");
+		if (string == null) {
+			System.out.print("<" + word);
+			System.out.print("> is found in ");
+			System.out.print(i);
+			System.out.print(" strings.");
+		}
+		
 		return stock;
 
 	}
 
 	private static String getTitle(ArrayList<String> pageStock) {
 		String title = null;
-		for (String e : pageStock) {
-			if (e.startsWith("<title>")) {
-
-				title = (e.substring(7).split("</title>"))[0];
+		ArrayList<String> stock = new ArrayList<String>();
+		for (String e : findWord(pageStock, "<title>")) {
+			String[] localVar = e.split("<title>");
+			for (String l : localVar) {
+				if (l.contains("</title>")) {
+					title = ((l.split("</title>"))[0]);
+				}
 			}
 		}
-		if (title == null) {
-			return "Title not found";
-		}
 		return title;
-		// TODO Auto-generated method stub
-
 	}
 
 	private static void savePageToFile(ArrayList<String> pageStock) {
