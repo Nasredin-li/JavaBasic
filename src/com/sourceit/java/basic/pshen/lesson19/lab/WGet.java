@@ -15,7 +15,7 @@ public class WGet {
 
 	public static void main(String[] args) {
 		String[] instruction = { "--JAVA CONSOLE BROWSER--",
-				"Usage: some web address", "Example: http://google.com", "Exit program: enter < 5 >" };
+				"Usage: some web address", "Example: http://google.com", "Exit program: enter < 6 >" };
 		String[] userAction = { "Save page", "Display a title of a page",
 				"Find some word", "list all url’s", "Enter new web adress","Exit program" };
 		URL url = null;
