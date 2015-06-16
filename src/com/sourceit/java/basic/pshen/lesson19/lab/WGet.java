@@ -146,9 +146,14 @@ public class WGet {
 				}
 			}
 		}
-		title.replace(" | ", " ");
-		title.replace(".", " ");
-		return title;
+		StringBuilder titleSB = new StringBuilder();
+		for (Character e : title.toCharArray()){
+			if(e!='|'){
+				titleSB.append(e);
+			}
+		}
+		//System.out.println(titleSB);
+		return titleSB.toString();
 	}
 
 	private static void savePageToFile(ArrayList<String> pageStock) {
