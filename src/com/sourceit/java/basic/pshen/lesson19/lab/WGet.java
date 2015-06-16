@@ -17,7 +17,7 @@ public class WGet {
 		String[] instruction = { "--JAVA CONSOLE BROWSER--",
 				"Usage: some web address", "Example: http://google.com", "Exit program: enter < 5 >" };
 		String[] userAction = { "Save page", "Display a title of a page",
-				"Find some word", "list all url’s", "Exit program" };
+				"Find some word", "list all url’s", "Enter new web adress","Exit program" };
 		URL url = null;
 		InputStream is = null;
 		BufferedReader br = null;
@@ -43,12 +43,12 @@ public class WGet {
 
 	private static void inputProcessing(String[] userAction, URL url,
 			InputStream is, BufferedReader br, String line, String in) {
-		if(in.equalsIgnoreCase("5")){
+		if(in.equalsIgnoreCase("6")){
 			end();
 		}else{
 		ArrayList<String> pageStock = downloadPage(url, is, br, line, in);
 		if (pageStock.size() == 0) {
-			System.out.println("Try again or enter < 5 > for exit");
+			System.out.println("Try again or enter < 6 > for exit");
 			inputProcessing(userAction, url, is, br, line, getIn());
 			return;
 		}
@@ -87,6 +87,10 @@ public class WGet {
 			userAction(userAction, url, is, br, line, pageStock);
 			break;
 		case 5:
+			System.out.println("Enter some web address:");
+			inputProcessing(userAction, url, is, br, line, getIn());
+			return;
+		case 6:
 			System.out.println("Exit");
 			return;
 		default:
