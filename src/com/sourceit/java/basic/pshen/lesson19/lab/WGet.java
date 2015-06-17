@@ -93,12 +93,16 @@ public class WGet {
 		case 6:
 			System.out.println("Exit");
 			return;
+		
 		default:
 			System.out.println("Please, check your input. You need enter a number of action. Example < 1 >");
 			userAction(userAction, url, is, br, line, pageStock);
 		}
 	}
 
+	
+		
+	
 	private static ArrayList<String> getURLs(ArrayList<String> pageStock) {
 		ArrayList<String> stock = new ArrayList<String>();
 		for (String e : findWord(pageStock, "http://")) {
