@@ -3,10 +3,13 @@
 #ClientID { background-color: lightgray;}
 
 #submit{ background-color: darkgreen;
-color:white; width:100%; }
+color:white; margin-left:40px; }
 
 #service-title-ID{background-color: #FFFF80;
-width:99%;}
+width:111%;}
 
 #workshop-name {background-color: #FFFF80;
-width:100%;}
+width:111%;}
+
+#a{background-color: lightblue; width:80%; height: 80%; margin: 4%; padding: 4%; position: absolute; border-width: 10px; border-color: black;
+}
