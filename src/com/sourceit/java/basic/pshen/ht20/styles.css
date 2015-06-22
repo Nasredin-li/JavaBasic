@@ -1,94 +1,51 @@
 
 	
-#start{color : gray;
+#start{color : lightgray;
 	margin-top : 8%;
 	 width: 500px;
 	}
 	 
-#start:hover{color: #4d548f;
+#start:hover{color: gray;
 	}	 
 
 #FIO{color : darkBlue;
 	 font-size : 30px;
 	}
-#t4{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#t4:hover {
-	color:black;
-	font-size: 18px;
-	}
-#education{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#education:hover {
-	color:black;
-	font-size: 18px;
-	}
+
+
 p 	{
-	color: dark-blue;
+	
 	width: 75%;
 	}
-#work{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#work:hover {
-	color:black;
-	font-size: 18px;
-	}	 
 
-#lang{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#lang:hover {
-	color:black;
-	font-size: 18px;
-	}	
- 
-#computer{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#computer:hover {
-	color:black;
-	font-size: 18px;
-	}	
-
-#about{
-	color:232424;
-	font-size: 17px;
-	padding: 20px;
-	}	
-#about:hover {
-	color:black;
-	font-size: 18px;
-	}	
-img{background: light-gray;
+img {background: light-gray;
 
 }
 #gradient {
     background: linear-gradient(to top, #8b95ff 0%, #a8affc 30%, #ffffff);
     
+	}
+	
+strong{
+	color:232424;
+	font-size: 17px;
+	padding: 20px;
 	}	
-#text{
+strong: hover{
+	color:black;
+	font-size: 18px;
+	}	
+	
+.text{
 	width: 75%;
 	font-size: 16px;
 	color: 4a4a4b;
 	margin-left : 4%;
 	}
-#text:hover{
+.text:hover{
 	color:black;
 	font-size: 16.5px;
-	}
+	}	
 
 h3.but {
 	
