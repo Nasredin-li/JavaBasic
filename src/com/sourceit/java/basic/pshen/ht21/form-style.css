@@ -6,10 +6,17 @@
 color:white; margin-left:40px; }
 
 #service-title-ID{background-color: #FFFF80;
-width:111%;}
+width:100%; height:24px;}
 
 #workshop-name {background-color: #FFFF80;
-width:111%;}
-
+width:100%;height:24px;}
+#Trainer {background-color: #FFFF80; width:100%;height:24px;}
 #a{background-color: lightblue; width:80%; height: 80%; margin: 4%; padding: 4%; position: absolute; border-width: 10px; border-color: black;
 }
+#Country{width:130%;height:24px; }
+#City{width:130%;height:24px; }
+#BeginDate{background-color: #FFFF80;
+width:50%;height:24px;}
+#kalend{margin-right:50px;}
+#EndDate{width:50%;height:24px; }
+#ED{margin-left:50px;}
