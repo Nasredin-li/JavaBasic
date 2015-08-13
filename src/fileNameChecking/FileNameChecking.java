@@ -3,8 +3,8 @@ package fileNameChecking;
 public class FileNameChecking {
 
 	private static final String LATIN_SYMBOL = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_@&$#~(){}1234567890";
-	private static final String NOT_LATIN_SYMBOL = "АВСЕНІКМОРТХУЗасеікморху№";
-	private static final String SHORT_LATIN_SYMBOL = "ABCEHIKMOPTXY3aceikmopxyN";
+	private static final String NOT_LATIN_SYMBOL = "АВСЕНІКМОРТХУЗасеікморху№ ";
+	private static final String SHORT_LATIN_SYMBOL = "ABCEHIKMOPTXY3aceikmopxyN_";
 	
 	public static StringBuilder latinFileName = new StringBuilder();
 	
