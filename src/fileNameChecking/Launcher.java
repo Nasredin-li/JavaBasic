@@ -16,23 +16,24 @@ public class Launcher implements ActionListener {
 	JPanel panel1;
 	JPanel panel2;
 	JPanel panel3;
-
+	File fileName;
+	String path="f:/KINO/òóö/";
 	public static void main(String[] args) {
 		Launcher lau = new Launcher();
 		lau.go();
-		File fileName= new File("F:\\JAVA\\lesson16");
-		System.out.println(fileName.getName());
-		System.out.println(fileName.isDirectory());
 		
-		System.out.println(fileName.list()[3]);
+		//System.out.println(fileName.getName());
+		//System.out.println(fileName.isDirectory());
+		
+		//System.out.println(fileName.list()[3]);
 		
 		
-		String file=(fileName.list()[3]).substring(0, (fileName.list()[3]).indexOf('.'));
+		/*String file=(fileName.list()[3]).substring(0, (fileName.list()[3]).indexOf('.'));
 		System.out.println(FileNameChecking.changeToLatin(file));
 		System.out.println(FileNameChecking.isLatin(FileNameChecking.changeToLatin(file)));
 		System.out.println(FileNameChecking.latinFileName);
 		
-		new File("F:\\JAVA\\lesson16\\"+fileName.list()[3]).renameTo(new File("F:\\JAVA\\lesson16\\"+FileNameChecking.latinFileName+".txt"));
+		new File("F:\\JAVA\\lesson16\\"+fileName.list()[3]).renameTo(new File("F:\\JAVA\\lesson16\\"+FileNameChecking.latinFileName+".txt"));*/
 		
 		
 	}
@@ -76,17 +77,45 @@ public class Launcher implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent event) {
+		fileName= new File(path);
 		if ("all".equals(event.getActionCommand())){
-			//TO DO
+			
+			
+			renameToLatin(3);
+			
 			button1.setText("Ready!");
+			button1.setEnabled(false);
+			button2.setEnabled(false);
+			button3.setEnabled(false);
 		}
 		if ("similar to latin".equals(event.getActionCommand())){
-			//TO DO
+			renameToLatin(1);
 			button2.setText("changed!");
+			button2.setEnabled(false);
+			
 		}
 		if ("remove cyrillic".equals(event.getActionCommand())){
-			//TO DO
+			renameToLatin(2);
 			button3.setText("removed!");
+			button1.setEnabled(false);
+			button2.setEnabled(false);
+			button3.setEnabled(false);
+		}
+	}
+	private void renameToLatin(int i) {
+		for(String e: fileName.list()){
+			String latinFileName = null;
+			String file = e.substring(0, e.indexOf('.'));
+			if(i==1){
+				latinFileName = FileNameChecking.changeToLatin(file);
+			}
+			if(i==2){
+				latinFileName = FileNameChecking.removeNonLatin(file);
+			}
+			if(i==3){
+				latinFileName = FileNameChecking.removeNonLatin(FileNameChecking.changeToLatin(file));
+			}
+			new File(path+e).renameTo(new File(path +latinFileName+e.substring(e.indexOf('.'))));
 		}
 	}
 	
