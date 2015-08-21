@@ -1,9 +1,7 @@
 package fileNameChecking;
 
 import java.io.File;
-
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -11,8 +9,7 @@ public class Launcher implements ActionListener {
 	JButton button1;
 	JButton button2;
 	JButton button3;
-	JRadioButton radioButton;
-	JRadioButton radioButton2;
+
 	JPanel panel1;
 	JPanel panel2;
 	JPanel panel3;
@@ -21,20 +18,6 @@ public class Launcher implements ActionListener {
 	public static void main(String[] args) {
 		Launcher lau = new Launcher();
 		lau.go();
-		
-		//System.out.println(fileName.getName());
-		//System.out.println(fileName.isDirectory());
-		
-		//System.out.println(fileName.list()[3]);
-		
-		
-		/*String file=(fileName.list()[3]).substring(0, (fileName.list()[3]).indexOf('.'));
-		System.out.println(FileNameChecking.changeToLatin(file));
-		System.out.println(FileNameChecking.isLatin(FileNameChecking.changeToLatin(file)));
-		System.out.println(FileNameChecking.latinFileName);
-		
-		new File("F:\\JAVA\\lesson16\\"+fileName.list()[3]).renameTo(new File("F:\\JAVA\\lesson16\\"+FileNameChecking.latinFileName+".txt"));*/
-		
 		
 	}
 	private void go() {
