@@ -24,6 +24,7 @@ public class Latin extends javax.swing.JFrame {
 	 */
 	public Latin() {
 		initComponents();
+
 	}
 
 	/**
@@ -37,7 +38,7 @@ public class Latin extends javax.swing.JFrame {
 	private void initComponents() {
 
 		jScrollPane1 = new javax.swing.JScrollPane();
-		jTextArea1 = new javax.swing.JTextArea();
+		fileNamesListText = new javax.swing.JTextArea();
 		jTextField1 = new javax.swing.JTextField();
 		jButton1 = new javax.swing.JButton();
 		jButton2 = new javax.swing.JButton();
@@ -46,11 +47,11 @@ public class Latin extends javax.swing.JFrame {
 		jScrollPane2 = new javax.swing.JScrollPane();
 		jList1 = new javax.swing.JList();
 		jScrollPane3 = new javax.swing.JScrollPane();
-		jTextArea2 = new javax.swing.JTextArea();
+		textMouseOn = new javax.swing.JTextArea();
 
-		jTextArea1.setColumns(20);
-		jTextArea1.setRows(5);
-		jScrollPane1.setViewportView(jTextArea1);
+		fileNamesListText.setColumns(20);
+		fileNamesListText.setRows(5);
+		jScrollPane1.setViewportView(fileNamesListText);
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,7 +88,7 @@ public class Latin extends javax.swing.JFrame {
 			}
 		});
 
-		jList1.setModel(new javax.swing.AbstractListModel() {
+		/*jList1.setModel(new javax.swing.AbstractListModel() {
 			String[] strings = {"1"};
 
 			public int getSize() {
@@ -97,12 +98,12 @@ public class Latin extends javax.swing.JFrame {
 			public Object getElementAt(int i) {
 				return strings[i];
 			}
-		});
+		});*/
 		jScrollPane2.setViewportView(jList1);
 
-		jTextArea2.setColumns(20);
-		jTextArea2.setRows(5);
-		jScrollPane3.setViewportView(jTextArea2);
+		textMouseOn.setColumns(20);
+		textMouseOn.setRows(5);
+		jScrollPane3.setViewportView(textMouseOn);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
@@ -144,8 +145,24 @@ public class Latin extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
-		pathAdaptation();
+		if (pathAdaptation() == null) {
+			return;
+		}
+		fileName = new File(pathAdaptation());
+		fileNamesListText.append(fileName.list()[1]);
+		jList1.setModel(new javax.swing.AbstractListModel() {
+			String[] strings = fileName.list();
 
+			public int getSize() {
+				return strings.length;
+			}
+
+			public Object getElementAt(int i) {
+				return strings[i];
+			}
+		});
+		
+		
 		jButton2.setEnabled(true);
 		jButton2.setText("Change similar to latin");
 		jButton3.setEnabled(true);
@@ -156,7 +173,8 @@ public class Latin extends javax.swing.JFrame {
 
 	private String pathAdaptation() {
 		String path = jTextField1.getText();
-		if (path.equals("Past the path to folder")) {
+
+		if (path.equals("Past the path to folder")||new File(path).isDirectory()==false) {
 			jTextField1.setForeground(new Color(255, 0, 0));
 			return null;
 		} else {
@@ -174,6 +192,7 @@ public class Latin extends javax.swing.JFrame {
 			return;
 		}
 		fileName = new File(pathAdaptation());
+		
 		renameToLatin(1);
 		jButton2.setText("changed!");
 		jButton2.setEnabled(false);
@@ -240,6 +259,7 @@ public class Latin extends javax.swing.JFrame {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new Latin().setVisible(true);
+				
 			}
 		});
 	}
@@ -249,7 +269,7 @@ public class Latin extends javax.swing.JFrame {
 		for (String e : fileName.list()) {
 			
 			if (a == 0) {
-				String[] strings = fileName.list();
+				
 				
 				
 			} else {
@@ -286,8 +306,8 @@ public class Latin extends javax.swing.JFrame {
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JScrollPane jScrollPane2;
 	private javax.swing.JScrollPane jScrollPane3;
-	private javax.swing.JTextArea jTextArea1;
-	private javax.swing.JTextArea jTextArea2;
+	private javax.swing.JTextArea fileNamesListText;
+	private javax.swing.JTextArea textMouseOn;
 	private javax.swing.JTextField jTextField1;
 	// End of variables declaration//GEN-END:variables
 }
