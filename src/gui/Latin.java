@@ -7,6 +7,8 @@ package gui;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 
 import gui.FileNameChecking;
@@ -15,9 +17,16 @@ import gui.FileNameChecking;
  *
  * @author Pshenichniy
  */
-public class Latin extends javax.swing.JFrame {
+public class Latin extends javax.swing.JFrame implements MouseListener {
 	File fileName;
-	String[] files=new String[40];
+	String[] instructions = 	{"Past the path to folder", 
+								"Chek File`s names",
+								"Change similar to latin",
+								"remove NonLatin",
+								"Change similar & remove NonLatin",
+								"Pasted path folder files list",
+								"Instructions as mouse over"};
+	
 
 	/**
 	 * Creates new form Latin
@@ -52,12 +61,14 @@ public class Latin extends javax.swing.JFrame {
 		fileNamesListText.setColumns(20);
 		fileNamesListText.setRows(5);
 		jScrollPane1.setViewportView(fileNamesListText);
+		fileNamesListText.addMouseListener(mouseOn(instructions[5]));
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		jTextField1.setForeground(new java.awt.Color(102, 102, 102));
 		jTextField1.setText("Past the path to folder");
 		jTextField1.setName("path"); // NOI18N
+		jTextField1.addMouseListener(mouseOn(instructions[0]));
 
 		jButton1.setText("Chek File`s names");
 		jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +76,9 @@ public class Latin extends javax.swing.JFrame {
 				jButton1ActionPerformed(evt);
 			}
 		});
+		
+		jButton1.addMouseListener(mouseOn(instructions[1]));
+        //addMouseListener(this);
 
 		jButton2.setText("Change similar to latin");
 		jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +86,7 @@ public class Latin extends javax.swing.JFrame {
 				jButton2ActionPerformed(evt);
 			}
 		});
+		jButton2.addMouseListener(mouseOn(instructions[2]));
 
 		jButton3.setText("remove NonLatin");
 		jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +94,7 @@ public class Latin extends javax.swing.JFrame {
 				jButton3ActionPerformed(evt);
 			}
 		});
+		jButton3.addMouseListener(mouseOn(instructions[3]));
 
 		jButton4.setText("<html><strong>Change similar & remove NonLatin</strong></html>");
 		jButton4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -87,6 +103,7 @@ public class Latin extends javax.swing.JFrame {
 				jButton4ActionPerformed(evt);
 			}
 		});
+		jButton4.addMouseListener(mouseOn(instructions[4]));
 
 		/*jList1.setModel(new javax.swing.AbstractListModel() {
 			String[] strings = {"1"};
@@ -103,6 +120,7 @@ public class Latin extends javax.swing.JFrame {
 
 		textMouseOn.setColumns(20);
 		textMouseOn.setRows(5);
+		textMouseOn.addMouseListener(mouseOn(instructions[6]));
 		jScrollPane3.setViewportView(textMouseOn);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,6 +161,44 @@ public class Latin extends javax.swing.JFrame {
 
 		pack();
 	}// </editor-fold>//GEN-END:initComponents
+
+	private MouseListener mouseOn(String instructions2) {
+		return new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				textMouseOn.setText(instructions2);
+				
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			
+			
+		};
+	}
 
 	private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_jButton1ActionPerformed
 		if (pathAdaptation() == null) {
@@ -310,4 +366,35 @@ public class Latin extends javax.swing.JFrame {
 	private javax.swing.JTextArea textMouseOn;
 	private javax.swing.JTextField jTextField1;
 	// End of variables declaration//GEN-END:variables
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		
+		
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 }
