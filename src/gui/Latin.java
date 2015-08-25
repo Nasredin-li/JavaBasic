@@ -19,14 +19,21 @@ import gui.FileNameChecking;
  */
 public class Latin extends javax.swing.JFrame implements MouseListener {
 	File fileName;
-	String[] instructions = 	{"Past the path to folder", 
-								"Chek File`s names",
-								"Change similar to latin",
-								"remove NonLatin",
-								"Change similar & remove NonLatin",
-								"Pasted path folder files list",
-								"Instructions as mouse over"};
-	
+	String[] instructions = {
+			"Past the folder path or write, what you need to check files \nnames if they have a Cyrillic characters",
+			"Output files names list in left pane \nif pasted or written the folder path is correct",
+			"Change Cyrillic characters similar to Latin characters. It will compare \n file name "
+					+ "with NOT_LATIN_SYMBOL (ÀÂÑÅÍ²ÊÌÎÐÒÕÓÇàñå³êìîðõó¹ ) \nahd change to SHORT_LATIN_SYMBOL"
+					+ "(ABCEHIKMOPTXY3aceikmopxyN_)",
+			"remove NonLatin characters. It will compare file name with LATIN_SYMBOL\n"
+					+ "(ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz\n-_@&$#~(){}1234567890)"
+					+ "and remove missing characters",
+			"Change Cyrillic characters similar to Latin characters. It will compare \nfile name "
+					+ "with NOT_LATIN_SYMBOL (ÀÂÑÅÍ²ÊÌÎÐÒÕÓÇàñå³êìîðõó¹ )\nahd change to SHORT_LATIN_SYMBOL"
+					+ "(ABCEHIKMOPTXY3aceikmopxyN_) \nand remove NonLatin characters. It will compare file name with \nLATIN_SYMBOL"
+					+ "(ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz-_@&$#~(){}1234567890)\n"
+					+ "and remove missing characters",
+			"Pasted path folder files list", "Instructions as mouse over" };
 
 	/**
 	 * Creates new form Latin
@@ -62,11 +69,12 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 		fileNamesListText.setRows(5);
 		jScrollPane1.setViewportView(fileNamesListText);
 		fileNamesListText.addMouseListener(mouseOn(instructions[5]));
+		fileNamesListText.setEditable(false);
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
 		jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-		jTextField1.setText("Past the path to folder");
+		jTextField1.setText("Past the folder path or write");
 		jTextField1.setName("path"); // NOI18N
 		jTextField1.addMouseListener(mouseOn(instructions[0]));
 
@@ -76,9 +84,9 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 				jButton1ActionPerformed(evt);
 			}
 		});
-		
+
 		jButton1.addMouseListener(mouseOn(instructions[1]));
-        //addMouseListener(this);
+		// addMouseListener(this);
 
 		jButton2.setText("Change similar to latin");
 		jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -105,22 +113,21 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 		});
 		jButton4.addMouseListener(mouseOn(instructions[4]));
 
-		/*jList1.setModel(new javax.swing.AbstractListModel() {
-			String[] strings = {"1"};
-
-			public int getSize() {
-				return strings.length;
-			}
-
-			public Object getElementAt(int i) {
-				return strings[i];
-			}
-		});*/
+		/*
+		 * jList1.setModel(new javax.swing.AbstractListModel() { String[]
+		 * strings = {"1"};
+		 * 
+		 * public int getSize() { return strings.length; }
+		 * 
+		 * public Object getElementAt(int i) { return strings[i]; } });
+		 */
 		jScrollPane2.setViewportView(jList1);
 
 		textMouseOn.setColumns(20);
 		textMouseOn.setRows(5);
-		textMouseOn.addMouseListener(mouseOn(instructions[6]));
+		textMouseOn.setBackground(new java.awt.Color(190, 190, 190));
+		textMouseOn.setEditable(false);
+		//textMouseOn.addMouseListener(mouseOn(instructions[6]));
 		jScrollPane3.setViewportView(textMouseOn);
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -168,35 +175,33 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				textMouseOn.setText(instructions2);
-				
+
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
-			
-			
 		};
 	}
 
@@ -205,7 +210,7 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 			return;
 		}
 		fileName = new File(pathAdaptation());
-		fileNamesListText.append(fileName.list()[1]);
+
 		jList1.setModel(new javax.swing.AbstractListModel() {
 			String[] strings = fileName.list();
 
@@ -218,7 +223,7 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 			}
 		});
 		
-		
+
 		jButton2.setEnabled(true);
 		jButton2.setText("Change similar to latin");
 		jButton3.setEnabled(true);
@@ -230,7 +235,7 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 	private String pathAdaptation() {
 		String path = jTextField1.getText();
 
-		if (path.equals("Past the path to folder")||new File(path).isDirectory()==false) {
+		if (path.equals("Past the path to folder") || new File(path).isDirectory() == false) {
 			jTextField1.setForeground(new Color(255, 0, 0));
 			return null;
 		} else {
@@ -248,7 +253,7 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 			return;
 		}
 		fileName = new File(pathAdaptation());
-		
+
 		renameToLatin(1);
 		jButton2.setText("changed!");
 		jButton2.setEnabled(false);
@@ -315,41 +320,39 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				new Latin().setVisible(true);
-				
+
 			}
 		});
 	}
 
 	private void renameToLatin(int a) {
-		
+
 		for (String e : fileName.list()) {
-			
-			if (a == 0) {
-				
-				
-				
-			} else {
+			if (new File(pathAdaptation() + e).isFile()) {
+				if (a == 0) {
 
-				String latinFileName = null;
-				String file = e.substring(0, e.indexOf('.'));
+				} else {
 
-				if (a == 1) {
-					latinFileName = FileNameChecking.changeToLatin(file);
+					String latinFileName = null;
+					String file = e.substring(0, e.indexOf('.'));
 
+					if (a == 1) {
+						latinFileName = FileNameChecking.changeToLatin(file);
+
+					}
+					if (a == 2) {
+						latinFileName = FileNameChecking.removeNonLatin(file);
+
+					}
+					if (a == 3) {
+						latinFileName = FileNameChecking.removeNonLatin(FileNameChecking.changeToLatin(file));
+
+					}
+
+					new File(pathAdaptation() + e)
+							.renameTo(new File(pathAdaptation() + latinFileName + e.substring(e.indexOf('.'))));
 				}
-				if (a == 2) {
-					latinFileName = FileNameChecking.removeNonLatin(file);
-
-				}
-				if (a == 3) {
-					latinFileName = FileNameChecking.removeNonLatin(FileNameChecking.changeToLatin(file));
-
-				}
-
-				new File(pathAdaptation() + e)
-						.renameTo(new File(pathAdaptation() + latinFileName + e.substring(e.indexOf('.'))));
 			}
-			
 		}
 	}
 
@@ -370,31 +373,29 @@ public class Latin extends javax.swing.JFrame implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
-		
-		
-		
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
