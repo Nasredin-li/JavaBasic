@@ -167,6 +167,7 @@ public class Latin extends javax.swing.JFrame {
 				.addGap(4, 4, 4)));
 
 		pack();
+		setLocationRelativeTo(null);
 	}// </editor-fold>//GEN-END:initComponents
 
 	private MouseListener mouseOn(String instructions2) {
