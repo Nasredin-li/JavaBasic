@@ -228,9 +228,9 @@ public class Latin extends javax.swing.JFrame {
 		jButton2.setEnabled(true);
 		jButton2.setText("Change similar to latin");
 		jButton3.setEnabled(true);
-		jButton3.setText("remove NonLatin");
+		jButton3.setText("Remove NonLatin");
 		jButton4.setEnabled(true);
-		jButton4.setText("<html><strong>Change similar & remove NonLatin</strong></html>");
+		jButton4.setText("<html><strong>Change Similar & Remove NonLatin</strong></html>");
 	}// GEN-LAST:event_jButton1ActionPerformed
 
 	private String pathAdaptation() {
