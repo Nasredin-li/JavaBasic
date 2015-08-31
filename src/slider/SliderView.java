@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JEditorPane;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -22,7 +23,25 @@ import javax.swing.JPanel;
  * @author Pshenichniy
  */
 public class SliderView extends javax.swing.JFrame {
-
+	 // Variables declaration - do not modify                     
+    private javax.swing.JButton leftButton1;
+    private javax.swing.JButton rightButton2;
+    private javax.swing.JButton leftButton3;
+    private javax.swing.JButton rightButton4;
+    private javax.swing.JButton imageButton5;
+    private javax.swing.JButton imageAndWordButton6;
+    private javax.swing.JButton wordButton7;
+    //private javax.swing.JEditorPane jEditorPane1;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JEditorPane jEditorPane2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    //private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    Image img;
+    // End of variables declaration      
     /**
      * Creates new form SliderView
      */
@@ -39,10 +58,20 @@ public class SliderView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
         jPanel2 = new javax.swing.JPanel();
+        //jScrollPane1 = new javax.swing.JScrollPane();
+        //jEditorPane1 = new javax.swing.JEditorPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel4 = new ImagePanel(new ImageIcon("f:/KINO/new/A_trois.jpg").getImage());
+        jPanel3 = new javax.swing.JPanel();
+        add(jPanel3);
+        add(jPanel4);
+        nameLabel = new javax.swing.JLabel();
+        jPanel1.add(jPanel4, -1);
+        jPanel1.add(jPanel3, -1);
+        nameLabel.setText("A_trois");
+        nameLabel.setSize(800, 400);;
+        jPanel3.add(nameLabel);
         jScrollPane2 = new javax.swing.JScrollPane();
         jEditorPane2 = new javax.swing.JEditorPane();
         leftButton1 = new javax.swing.JButton();
@@ -56,19 +85,22 @@ public class SliderView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         String t="ÊÎÒ";
         
-        try {
-            BufferedImage img = ImageIO.read(new File("d:/Serge/java/lib/img/cat.jpeg"));
+        /*try {
+        	
+            BufferedImage img = ImageIO.read(new File("f:/KINO/òóö/A_trois.jpg"));
             ImageIcon icon = new ImageIcon(img);
             JLabel label = new JLabel(icon);
-            JOptionPane.showMessageDialog(null, label);
-            jEditorPane2.add(label);
-            jEditorPane1.add(label);
+            
+           // jPanel1 = new javax.swing.JPanel("f:/KINO/new/A_trois.jpg");
+            //jEditorPane1.add(label);
+           //ImageImplement panel = new ImageImplement(new ImageIcon("f:/KINO/òóö/Âòðîåì.jpg").getImage());
+            
          } catch (IOException e) {
             e.printStackTrace();
          }
-        
+        */
 
-        jScrollPane1.setViewportView(jEditorPane1);
+        //jScrollPane1.setViewportView(jEditorPane1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,13 +108,13 @@ public class SliderView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1))
-        );
+                //.addComponent(jScrollPane1))
+        ));
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                //.addComponent(jScrollPane1)
                 .addContainerGap())
         );
 
@@ -276,20 +308,5 @@ public class SliderView extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify                     
-    private javax.swing.JButton leftButton1;
-    private javax.swing.JButton rightButton2;
-    private javax.swing.JButton leftButton3;
-    private javax.swing.JButton rightButton4;
-    private javax.swing.JButton imageButton5;
-    private javax.swing.JButton imageAndWordButton6;
-    private javax.swing.JButton wordButton7;
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JEditorPane jEditorPane2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    Image img;
-    // End of variables declaration                   
+                
 }
