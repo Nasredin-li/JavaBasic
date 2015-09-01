@@ -1,5 +1,7 @@
 package slider;
 
+import java.io.File;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -36,7 +38,8 @@ package slider;
 	    @SuppressWarnings("unchecked")
 	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
 	    private void initComponents() {
-
+	    	new IteratorImages(new File("D:/Serge/Обои/"));
+	    	
 	        imageAndTextAndControlPanel = new javax.swing.JPanel();
 	        imageAndControlPanel = new javax.swing.JPanel();
 	        imagePanel = new javax.swing.JPanel();
@@ -423,6 +426,7 @@ package slider;
 	     * @param args the command line arguments
 	     */
 	    public static void main(String args[]) {
+	    	
 	        /* Set the Nimbus look and feel */
 	        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
 	        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -450,6 +454,7 @@ package slider;
 	        java.awt.EventQueue.invokeLater(new Runnable() {
 	            public void run() {
 	                new LearnToRead().setVisible(true);
+	                
 	            }
 	        });
 	    }
