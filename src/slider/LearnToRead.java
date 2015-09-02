@@ -1,5 +1,6 @@
 package slider;
 
+import java.awt.event.ActionEvent;
 import java.io.File;
 
 /*
@@ -21,6 +22,7 @@ import java.io.File;
  */
 
 
+
 	public class LearnToRead extends javax.swing.JFrame {
 
 	    /**
@@ -38,11 +40,17 @@ import java.io.File;
 	    @SuppressWarnings("unchecked")
 	    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
 	    private void initComponents() {
-	    	new IteratorImages(new File("D:/Serge/Обои/"));
+	    	//new IteratorImages(new File("D:/Serge/Обои/"));
 	    	
 	        imageAndTextAndControlPanel = new javax.swing.JPanel();
 	        imageAndControlPanel = new javax.swing.JPanel();
+	        
 	        imagePanel = new javax.swing.JPanel();
+	        jFileChooser = new javax.swing.JFileChooser();
+	        
+	        imagePanel.add(jFileChooser); 
+	        
+	        
 	        wrongButton = new javax.swing.JButton();
 	        imageModeButton = new javax.swing.JButton();
 	        imageAndTextModeButton = new javax.swing.JButton();
@@ -352,13 +360,24 @@ import java.io.File;
 	        pathTextField.setText("enter new library path");
 
 	        renameButton.setText("RENAME");
-
+	        
 	        browseButton.setText("browse");
+	        browseButton.addActionListener(new java.awt.event.ActionListener() {
+				public void actionPerformed(java.awt.event.ActionEvent evt) {
+					browseButtonActionPerformed(evt);
+				}
+
+				private void browseButtonActionPerformed(ActionEvent evt) {
+					//new BrowsePanel();
+					
+				}
+			});
 
 	        libraryPathLabel.setText("librairy path");
 
 	        javax.swing.GroupLayout toolsPanelLayout = new javax.swing.GroupLayout(toolsPanel);
 	        toolsPanel.setLayout(toolsPanelLayout);
+	        
 	        toolsPanelLayout.setHorizontalGroup(
 	            toolsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 	            .addGroup(toolsPanelLayout.createSequentialGroup()
@@ -412,6 +431,7 @@ import java.io.File;
 	        );
 
 	        pack();
+	        
 	    }// </editor-fold>                        
 
 	    private void leftBigButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
@@ -486,5 +506,7 @@ import java.io.File;
 	    private javax.swing.JButton textModeButton;
 	    private javax.swing.JPanel toolsPanel;
 	    private javax.swing.JButton wrongButton;
+	    //private BrowsePanel browsePanel;
+	    private javax.swing.JFileChooser jFileChooser;
 	    // End of variables declaration                   
 	}
